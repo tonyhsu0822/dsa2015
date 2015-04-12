@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstring>
+#include <string>
 using namespace std;
 #define MAX_USER 24000000
 #define URL_LENGTH 50
@@ -202,6 +203,9 @@ int main(int argc, char *argv[]){
 	Data tmpdata;
 	int tmpuserid;
 	FILE *fp;
+	string cmd;
+	int u1, u2, a, q, p, d;
+	double theta;
 	
 	if((fp = fopen(argv[1], "r")) == NULL){
 		cout << "fopen fail\n";
@@ -219,28 +223,37 @@ int main(int argc, char *argv[]){
 	}
 	
 	//test part
-	/*
-	cout << "********************" << endl;
-	printVec(490234);
-	cout << "********************" << endl;
-	*/
-	cout << "********************" << endl;
-	clicked(490234);
-	cout << "********************" << endl;
-	cout << "********************" << endl;
-	get(490234, 21560664, 2255103, 2, 2);
-	cout << "********************" << endl;
-	cout << "********************" << endl;
-	impressed(6231944, 490234);
-	cout << "********************" << endl;
-	cout << "********************" << endl;
-	profit(21375650, 0.5);
-	cout << "********************" << endl;
-	/*
-	cout << "********************" << endl;
-	printVec(6231938);
-	cout << "********************" << endl;
-	*/
+	while(1){
+		cin >> cmd;
+		if(cmd == "get"){
+			cin >> u1 >> a >> q >> p >> d;
+			cout << "********************" << endl;
+			get(u1, a, q, p, d);
+			cout << "********************" << endl;
+		}
+		else if(cmd == "clicked"){
+			cin >> u1;
+			cout << "********************" << endl;
+			clicked(u1);
+			cout << "********************" << endl;
+		}
+		else if(cmd == "impressed"){
+			cin >> u1 >> u2;
+			cout << "********************" << endl;
+			impressed(u1, u2);
+			cout << "********************" << endl;
+		}
+		else if(cmd == "profit"){
+			cin >> a >> theta;
+			cout << "********************" << endl;
+			profit(a, theta);
+			cout << "********************" << endl;
+		}
+		else if(cmd == "quit")
+				break;
+	}
+	
+	fclose(fp);
 	return 0;
 }
 
